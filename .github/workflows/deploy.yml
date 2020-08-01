@@ -29,20 +29,6 @@ jobs:
        PASSWORD: ${{ secrets.PASSWORD }}
        PORT: ${{ secrets.PORT }}
      with:
-       source: "index.html"
-       target: "/var/www/digitalagconsultants.com"
+       source: "*, !.github"
+       target: "/servers/nodejs/HopBaleTracker"
 
-   # Copy all the nodejs sources to the droplet servlet directory
-   - name: Copy node_src via scp (secure copy)
-     uses: appleboy/scp-action@master
-     env:
-       HOST: ${{ secrets.HOST }} 
-       USERNAME: ${{ secrets.USERNAME }} 
-       PASSWORD: ${{ secrets.PASSWORD }}
-       PORT: ${{ secrets.PORT }}
-     with:
-       source: "node/server.js"
-       target: "/apps/nodejs"
-       strip_components: 1 # Remove the folder level above server.js
-
-       
